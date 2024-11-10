@@ -7,5 +7,6 @@ test/web-ext-profile
 artifacts
 .DS_Store
 desktop.ini
-
+web-ext-artifacts
+*.zip
 LocalOverrides.xcconfig
