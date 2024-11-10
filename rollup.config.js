@@ -19,9 +19,12 @@ const noise = new Set(['index', 'dist', 'src', 'source', 'distribution', 'node_m
 /** @type {import('rollup').RollupOptions} */
 const rollup = {
   input: {
-    'preview-results': './src/preview-results.tsx',
+    'options': './src/options.tsx',
+    'welcome': './src/welcome.svelte',
     'background': './src/background.ts',
     'content-script': './src/content-script.ts',
+    // Features
+    'preview-results': './src/preview-results.tsx',
   },
   output: {
     dir: 'distribution/assets',

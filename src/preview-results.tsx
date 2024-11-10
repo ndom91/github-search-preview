@@ -3,9 +3,10 @@ import CodeSquare from 'octicons-plain-react/CodeSquare';
 import Copy from 'octicons-plain-react/Copy';
 import Close from 'octicons-plain-react/XCircle';
 import NewTab from 'octicons-plain-react/LinkExternal';
-// import * as pageDetect from 'github-url-detection';
+import * as pageDetect from 'github-url-detection';
 import mem from 'memoize';
 import { messageRuntime } from 'webext-msg';
+import { add } from "./helpers/init-helpers.js";
 
 // import features from '../feature-manager.js';
 import observe from './helpers/selector-observer.js';
@@ -129,3 +130,12 @@ Test URLs
 https://github.com/search?q=tauri&type=code
 
 */
+
+
+
+void add(import.meta.url, {
+	include: [
+		pageDetect.isGlobalSearchResults,
+	],
+	init,
+});
