@@ -65,6 +65,11 @@
 	}
 }
 
+.searchPreview-preview-btn::focus-visible,
+.searchPreview-preview-btn {
+	outline: none !important;
+}
+
 #refined-preview-search-result-pre-content {
 	padding: 1rem;
 	overflow: scroll;

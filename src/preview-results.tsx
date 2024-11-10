@@ -82,7 +82,7 @@ function init(signal: AbortSignal): void {
 			<a
 				href="#"
 				title="Preview File"
-				className="self-end px-2"
+				className="self-end px-2 searchPreview-preview-btn"
 				onClick={async event => {
 					event.preventDefault();
 					originalUrl = link.href;
@@ -111,27 +111,6 @@ function init(signal: AbortSignal): void {
 		);
 	}, { signal });
 }
-
-const abortSignal = new AbortController().signal;
-
-init(abortSignal)
-
-// void features.add(import.meta.url, {
-// 	include: [
-// 		pageDetect.isGlobalSearchResults,
-// 	],
-// 	init,
-// });
-
-/*
-
-Test URLs
-
-https://github.com/search?q=tauri&type=code
-
-*/
-
-
 
 void add(import.meta.url, {
 	include: [
