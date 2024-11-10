@@ -76,4 +76,24 @@
 	height: calc(100% - 48px);
 	width: 100%;
 	outline: none;
+
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+
+	counter-reset: line;
+
+	span {
+		counter-increment: line;
+	}
+
+	span:before {
+		display: inline-block;
+		width: 4ch;
+		text-align: left;
+		content: counter(line);
+		user-select: none;
+		-webkit-user-select: none;
+		color: var(--fgColor-muted, var(--color-fg-muted, #848d97));
+	}
 }
