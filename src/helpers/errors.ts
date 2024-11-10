@@ -31,9 +31,7 @@ export function logError(error: Error): void {
 	}
 
 	// Don't change this to `throw Error` because Firefox doesn't show extensions' errors in the console
-	// console.group(`❌ Refined GitHub: ${id ?? 'global'}`);
 	console.log(`📕 ${version} →`, error);
-	// console.groupEnd();
 }
 
 export function catchErrors(): void {

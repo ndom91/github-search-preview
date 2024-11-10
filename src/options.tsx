@@ -59,14 +59,8 @@ function updateRateLink(): void {
 }
 
 async function generateDom(): Promise<void> {
-	// // Generate list
-	// await initFeatureList();
-
 	// Update list from saved options
 	syncedForm = await perDomainOptions.syncForm('form');
-
-	// Decorate list
-	// updateListDom();
 
 	// Only now the form is ready, we can show it
 	$('#js-failed').remove();
@@ -89,9 +83,6 @@ function addEventListeners(): void {
 	syncedForm?.onChange(async domain => {
 		// Point the link to the right domain
 		$('a#personal-token-link').host = domain === 'default' ? 'github.com' : domain;
-
-		// Delay to let options load first
-		// setTimeout(updateListDom, 100);
 	});
 
 	// Refresh page when permissions are changed (because the dropdown selector needs to be regenerated)

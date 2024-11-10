@@ -25,7 +25,6 @@
 	$: if (tokenInput) {
 		verifyToken();
 
-		// @ts-expect-error TS and its index signatures...
 		optionsStorage.set({personalToken: tokenInput});
 	}
 

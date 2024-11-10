@@ -100,7 +100,7 @@
 			"firefoxProfile": "./test/web-ext-profile",
 			"chromiumProfile": "./test/web-ext-profile",
 			"startUrl": [
-				"https://github.com/refined-github/refined-github/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc"
+				"https://github.com/ndom91/github-search-preview"
 			]
 		}
 	}

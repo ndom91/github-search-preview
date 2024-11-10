@@ -6,9 +6,7 @@ import { signalFromPromise } from 'abort-utils';
 
 import delay from '../helpers/delay.js';
 import onetime from '../helpers/onetime.js';
-// import optionsStorage from '../options-storage.js';
 import getCallerID from './caller-id.js';
-// import { parseFeatureNameFromStack } from './errors.js';
 
 // Reads from path like assets/features/NAME.js
 export function parseFeatureNameFromStack(stack: string = new Error('stack').stack!): FeatureID | undefined {
@@ -62,11 +60,6 @@ export default function observe<
 	registerAnimation();
 
 	const rule = document.createElement('style');
-	// Enable when/if needed
-	// if (isDevelopmentVersion()) {
-	// 	// For debuggability
-	// 	rule.setAttribute('s', selector);
-	// }
 
 	rule.textContent = css`
 		:where(${String(selector)}):not(.${seenMark}) {
@@ -78,30 +71,12 @@ export default function observe<
 		rule.remove();
 	});
 
-	// let called = false;
-	// Capture stack outside
-	// const currentFeature = parseFeatureNameFromStack();
-	// (async () => {
-	// 	// const { logging } = await optionsStorage.getAll();
-	// 	// if (!logging) {
-	// 	// 	return;
-	// 	// }
-	//
-	// 	await domLoaded;
-	// 	await delay(1000);
-	// 	if (!called && !signal?.aborted) {
-	// 		console.warn(currentFeature, '→ Selector not found on page:', selector);
-	// 	}
-	// })();
-
 	globalThis.addEventListener('animationstart', (event: AnimationEvent) => {
 		const target = event.target as ExpectedElement;
 		// The target can match a selector even if the animation actually happened on a ::before pseudo-element, so it needs an explicit exclusion here
 		if (target.classList.contains(seenMark) || !target.matches(selector)) {
 			return;
 		}
-
-		// called = true;
 
 		// Removes this specific selector’s animation once it was seen
 		target.classList.add(seenMark);
