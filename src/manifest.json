@@ -42,10 +42,7 @@
 	"options_page": "assets/options.html",
 	"background": {
 		"service_worker": "assets/background.js",
-		"type": "module",
-		"scripts": [
-			"assets/background.js"
-		]
+		"type": "module"
 	},
 	"content_scripts": [
 		{

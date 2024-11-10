@@ -7,8 +7,8 @@ import * as pageDetect from 'github-url-detection';
 import mem from 'memoize';
 import { messageRuntime } from 'webext-msg';
 import { add } from "./helpers/init-helpers.js";
+import { parseCode } from "./helpers/parse-file-language.js"
 
-// import features from '../feature-manager.js';
 import observe from './helpers/selector-observer.js';
 import { searchResultFileName } from './selectors.js';
 
@@ -51,10 +51,7 @@ function init(signal: AbortSignal): void {
 					/>
 				</div>
 			</div>
-
-			<pre id="refined-preview-search-result-pre-content">
-
-			</pre>
+			<div id="refined-preview-search-result-pre-content"></div>
 		</dialog>
 	) as unknown as HTMLDialogElement;
 
@@ -91,20 +88,13 @@ function init(signal: AbortSignal): void {
 					const url = new URL(link.href);
 					const urlWithoutParameters = `${url.origin}${url.pathname.replace('blob', 'raw')}`;
 					const fileBody = await fetchFile(new URL(urlWithoutParameters).toString());
-					console.log('fileBody', fileBody);
+					const fileName = link.textContent;
 
-					// Set <pre> content to file contents
 					const dialogPreElement = document.querySelector('#refined-preview-search-result-pre-content');
 					if (dialogPreElement) {
 						// Remove all children from dialogPreElement
 						dialogPreElement.innerHTML = '';
-
-						// Add document lines individually to `pre` for CSS line numbers
-						fileBody.split('\n').forEach((line, _index) => {
-							const lineElement = document.createElement('span')
-							lineElement.textContent = line
-							dialogPreElement.append(lineElement);
-						})
+						dialogPreElement.innerHTML = await parseCode(fileBody, fileName);
 					}
 
 					// Set dialog header file name

@@ -14,6 +14,7 @@ export function parseFeatureNameFromStack(stack: string = new Error('stack').sta
 }
 
 export function logError(error: Error): void {
+	console.log('ERR', error)
 	const { message, stack } = error;
 
 
@@ -29,29 +30,15 @@ export function logError(error: Error): void {
 		return;
 	}
 
-	const searchIssueUrl = new URL('https://github.com/refined-github/refined-github/issues');
-	searchIssueUrl.searchParams.set('q', `is:issue is:open label:bug ${id ?? message}`);
-
-	const newIssueUrl = new URL('https://github.com/refined-github/refined-github/issues/new');
-	newIssueUrl.searchParams.set('template', '1_bug_report.yml');
-	newIssueUrl.searchParams.set('title', id ? `\`${id}\`: ${message}` : message);
-	newIssueUrl.searchParams.set('repro', location.href);
-	newIssueUrl.searchParams.set('description', [
-		'```',
-		String(error instanceof Error ? error.stack! : error).trim(),
-		'```',
-	].join('\n'));
-
 	// Don't change this to `throw Error` because Firefox doesn't show extensions' errors in the console
-	console.group(`❌ Refined GitHub: ${id ?? 'global'}`); // Safari supports only one parameter
-	console.log(`📕 ${version} →`, error); // One parameter improves Safari formatting
-	console.log('🔍 Search issue', searchIssueUrl.href);
-	console.log('🚨 Report issue', newIssueUrl.href);
-	console.groupEnd();
+	// console.group(`❌ Refined GitHub: ${id ?? 'global'}`);
+	console.log(`📕 ${version} →`, error);
+	// console.groupEnd();
 }
 
 export function catchErrors(): void {
 	globalThis.addEventListener('error', event => {
+		console.log('error.event', event)
 		const { error } = event; // Access only once
 		// Don't use `assertError` or it'll loop
 		if (error) {
@@ -61,6 +48,7 @@ export function catchErrors(): void {
 	});
 
 	addEventListener('unhandledrejection', event => {
+		console.log('unhandledrejection.event', event)
 		const error = event.reason; // Access only once
 		// Don't use `assertError` or it'll loop
 		if (error) {

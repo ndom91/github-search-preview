@@ -83,11 +83,15 @@
 
 	counter-reset: line;
 
-	span {
+	span.line {
 		counter-increment: line;
 	}
 
-	span:before {
+	pre {
+		background-color: transparent !important;
+	}
+
+	span.line:before {
 		display: inline-block;
 		width: 4ch;
 		text-align: left;
