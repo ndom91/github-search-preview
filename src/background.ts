@@ -99,7 +99,7 @@ chrome.runtime.onInstalled.addListener(async () => {
 	}
 
 	if (await chrome.permissions.contains({ origins: ['*://*/*'] })) {
-		console.warn('Refined GitHub was granted access to all websites by the user and it’s now been removed. https://github.com/refined-github/refined-github/pull/7407');
+		console.warn('GitHub Search Preview was granted access to all websites by the user and it’s now been removed. https://github.com/refined-github/refined-github/pull/7407');
 		await chrome.permissions.remove({
 			origins: [
 				'*://*/*',
@@ -118,6 +118,6 @@ chrome.permissions.onAdded.addListener(async permissions => {
 				'*://*/*',
 			],
 		});
-		await webextAlert('Refined GitHub is not meant to run on every website. If you’re looking to enable it on GitHub Enterprise, follow the instructions in the Options page.');
+		await webextAlert('GitHub Search Preview is not meant to run on every website. If you’re looking to enable it on GitHub Enterprise, follow the instructions in the Options page.');
 	}
 });

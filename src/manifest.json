@@ -56,9 +56,6 @@
 			"exclude_matches": [
 				"https://*/login/*"
 			],
-			"css": [
-				"assets/global.css"
-			],
 			"js": [
 				"assets/content-script.js"
 			]

@@ -11,7 +11,7 @@ import { messageRuntime } from 'webext-msg';
 import observe from './helpers/selector-observer.js';
 import { searchResultFileName } from './selectors.js';
 
-import './preview-search-result.css';
+import './preview-results.css';
 
 // Fetch via background.js due to CORB policies. Also memoize to avoid multiple requests.
 const fetchFile = mem(
