@@ -1,0 +1,25 @@
+{
+	"extends": "@sindresorhus/tsconfig",
+	"compilerOptions": {
+		"outDir": "./distribution/assets",
+		"rootDir": "./",
+		"module": "node16",
+		"declaration": false,
+		"moduleResolution": "node16",
+		"noUncheckedIndexedAccess": false,
+		"noPropertyAccessFromIndexSignature": false,
+		"resolveJsonModule": true,
+		"lib": [
+			"DOM",
+			"DOM.Iterable",
+			"ESNext.Collection",
+			"ESNext.Object",
+			"ES2023"
+		]
+	},
+	"include": [
+		"source",
+		"test",
+		"build"
+	]
+}

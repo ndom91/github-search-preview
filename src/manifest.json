@@ -1,0 +1,73 @@
+{
+	"$schema": "https://json.schemastore.org/chrome-manifest",
+	"name": "GitHub Search Preview",
+	"version": "0.0.1",
+	"description": "Enables showing a preview of the full file from the GitHub search results page.",
+	"homepage_url": "https://github.com/ndom91/github-search-preview",
+	"manifest_version": 3,
+	"minimum_chrome_version": "116",
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "{a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad}",
+			"strict_min_version": "126.0"
+		},
+		"gecko_android": {
+			"id": "{a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad}",
+			"strict_min_version": "126.0"
+		}
+	},
+	"permissions": [
+		"storage",
+		"scripting",
+		"contextMenus",
+		"activeTab",
+		"alarms"
+	],
+	"host_permissions": [
+		"https://github.com/*",
+		"https://api.github.com/*"
+	],
+	"action": {
+		"default_icon": "assets/icon.png"
+	},
+	"optional_permissions": [
+		"*://*/*"
+	],
+	"optional_host_permissions": [
+		"*://*/*"
+	],
+	"icons": {
+		"128": "assets/icon.png"
+	},
+	"background": {
+		"service_worker": "assets/background.js",
+		"type": "module",
+		"scripts": [
+			"assets/background.js"
+		]
+	},
+	"content_scripts": [
+		{
+			"run_at": "document_start",
+			"matches": [
+				"https://github.com/*",
+				"https://gist.github.com/*"
+			],
+			"exclude_matches": [
+				"https://*/login/*"
+			],
+			"css": [
+				"assets/global.css"
+			],
+			"js": [
+				"assets/content-script.js"
+			]
+		}
+	],
+	"web_accessible_resources": [
+		{
+			"resources": [ "assets/*" ],
+			"matches": [ "https://*/*" ]
+		}
+	]
+}

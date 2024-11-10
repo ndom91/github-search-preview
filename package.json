@@ -1,0 +1,86 @@
+{
+	"name": "github-search-preview",
+	"version": "0.0.1",
+	"description": "Show a preview of file results from GitHub search page",
+	"type": "module",
+	"scripts": {
+		"build": "run-p build:* --continue-on-error",
+		"build:typescript": "tsc --noEmit",
+		"build:bundle": "rollup -c",
+		"fix": "run-p \"lint:css -- --fix\" \"lint:js -- --fix\" fix:prettier \"vitest -- --update\" --continue-on-error",
+		"fix:prettier": "prettier . --write",
+		"lint": "run-p lint:* --continue-on-error",
+		"lint:css": "stylelint \"source/**/*.css\"",
+		"lint:js": "eslint .",
+		"watch": "run-p watch:* --continue-on-error",
+		"watch:typescript": "tsc --noEmit --watch --preserveWatchOutput",
+		"watch:bundle": "rollup -c --watch"
+	},
+	"keywords": [
+		"webextension"
+	],
+	"author": "ndom91 <yo@ndo.dev> (https://ndo.dev)",
+	"repository": "https://github.com/ndom91/github-search-preview",
+	"license": "MIT",
+	"packageManager": "pnpm@9.12.0+sha512.4abf725084d7bcbafbd728bfc7bee61f2f791f977fd87542b3579dcb23504d170d46337945e4c66485cd12d588a0c0e570ed9c477e7ccdd8507cf05f3f92eaca",
+	"dependencies": {
+		"code-tag": "^1.2.0",
+		"dom-chef": "^5.1.1",
+		"github-url-detection": "^10.0.1",
+		"memoize": "^10.0.0",
+		"octicons-plain-react": "^19.12.0",
+		"tiny-version-compare": "^4.0.0",
+		"uint8array-extras": "^1.4.0",
+		"webext-alert": "^1.0.2",
+		"webext-dynamic-content-scripts": "^10.0.4",
+		"webext-msg": "^1.0.0",
+		"webext-permission-toggle": "^5.1.0",
+		"webext-storage": "^1.2.2",
+		"webext-storage-cache": "^6.0.3",
+		"webext-tools": "^2.0.1"
+	},
+	"devDependencies": {
+		"@rollup/plugin-alias": "^5.1.1",
+		"@rollup/plugin-commonjs": "^28.0.1",
+		"@rollup/plugin-json": "^6.1.0",
+		"@rollup/plugin-node-resolve": "^15.3.0",
+		"@rollup/plugin-sucrase": "^5.0.2",
+		"@sindresorhus/tsconfig": "^6.0.0",
+		"@types/chrome": "^0.0.280",
+		"@types/codemirror": "^5.60.15",
+		"@types/dom-navigation": "^1.0.4",
+		"@types/node": "^22.9.0",
+		"@types/react": "^18.3.12",
+		"eslint": "^9.14.0",
+		"lightningcss": "^1.28.1",
+		"npm-run-all": "^4.1.5",
+		"prettier": "^3.3.3",
+		"rollup": "^4.25.0",
+		"rollup-plugin-cleanup": "^3.2.1",
+		"rollup-plugin-copy": "^3.5.0",
+		"rollup-plugin-delete": "^2.1.0",
+		"rollup-plugin-string": "^3.0.0",
+		"rollup-plugin-styles": "^4.0.0",
+		"rollup-plugin-svelte": "^7.2.2",
+		"rollup-plugin-webpack-stats": "^1.1.1",
+		"stylelint": "^16.10.0",
+		"svelte": "4",
+		"svelte-preprocess": "6",
+		"typescript": "^5.6.3",
+		"unplugin-lightningcss": "^0.1.0"
+	},
+	"prettier": {
+		"singleQuote": true
+	},
+	"webExt": {
+		"sourceDir": "distribution",
+		"run": {
+			"keepProfileChanges": true,
+			"firefoxProfile": "./test/web-ext-profile",
+			"chromiumProfile": "./test/web-ext-profile",
+			"startUrl": [
+				"https://github.com/refined-github/refined-github/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc"
+			]
+		}
+	}
+}
