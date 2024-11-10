@@ -57,6 +57,10 @@
 			"exclude_matches": [
 				"https://*/login/*"
 			],
+			"css": [
+				"assets/global.css",
+				"assets/preview-results.css"
+			],
 			"js": [
 				"assets/content-script.js"
 			]

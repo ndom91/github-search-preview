@@ -1,4 +1,4 @@
-import React from 'dom-chef';
+// import React from 'dom-chef';
 import { elementExists } from 'select-dom';
 import { Promisable } from 'type-fest';
 import * as pageDetect from 'github-url-detection';
@@ -92,11 +92,12 @@ const globalReady = new Promise<RGHOptions>(async resolve => {
 	// https://github.com/refined-github/refined-github/issues/6433
 	void messageRuntime<string>({ getStyleHotfixes: true }).then(applyStyleHotfixes);
 
-	if (options.customCSS.trim().length > 0) {
-		// Review #5857 and #5493 before making changes
-		// @ts-ignore
-		document.head.append(<style>{ options.customCSS } </style>);
-	}
+	// if (options.customCSS.trim().length > 0) {
+	// 	// Review #5857 and #5493 before making changes
+	// 	// @ts-ignore
+	// 	document.head.append(document.createElement('style').setTextContent(options.customCSS));
+	// 	// <style>{ options.customCSS } </style>);
+	// }
 
 	// Create logging function
 	if (!options.logging) {

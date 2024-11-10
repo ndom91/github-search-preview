@@ -1,7 +1,7 @@
 import 'webext-dynamic-content-scripts';
 import { globalCache } from 'webext-storage-cache'; // Also needed to regularly clear the cache
 import { addOptionsContextMenu } from 'webext-tools';
-import addPermissionToggle from 'webext-permission-toggle';
+// import addPermissionToggle from 'webext-permission-toggle';
 import webextAlert from 'webext-alert';
 // import { StorageItem } from 'webext-storage';
 import { handleMessages } from 'webext-msg';
@@ -16,7 +16,7 @@ const { version } = chrome.runtime.getManifest();
 // const welcomeShown = new StorageItem('welcomed', { defaultValue: false });
 
 // GHE support
-addPermissionToggle();
+// addPermissionToggle();
 
 // Firefox/Safari polyfill
 addOptionsContextMenu();

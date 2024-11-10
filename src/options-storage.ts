@@ -8,7 +8,9 @@ const defaults = Object.assign({
 	personalToken: '',
 	logging: false,
 	logHTTP: false,
-}, ['github-search-preview', true]);
+}, {
+	id: 'github-search-preview'
+});
 
 
 export const perDomainOptions = new OptionsSyncPerDomain({ defaults });
@@ -19,7 +21,7 @@ const cachedSettings = optionsStorage.getAll();
 
 export async function getToken(): Promise<string | undefined> {
 	const { personalToken } = await cachedSettings;
-	return personalToken;
+	return personalToken as string;
 }
 
 export async function hasToken(): Promise<boolean> {

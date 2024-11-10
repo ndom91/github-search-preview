@@ -78,21 +78,22 @@ export default function observe<
 		rule.remove();
 	});
 
-	let called = false;
+	// let called = false;
 	// Capture stack outside
-	const currentFeature = parseFeatureNameFromStack();
-	(async () => {
-		// const { logging } = await optionsStorage.getAll();
-		// if (!logging) {
-		// 	return;
-		// }
+	// const currentFeature = parseFeatureNameFromStack();
+	// (async () => {
+	// 	// const { logging } = await optionsStorage.getAll();
+	// 	// if (!logging) {
+	// 	// 	return;
+	// 	// }
+	//
+	// 	await domLoaded;
+	// 	await delay(1000);
+	// 	if (!called && !signal?.aborted) {
+	// 		console.warn(currentFeature, '→ Selector not found on page:', selector);
+	// 	}
+	// })();
 
-		await domLoaded;
-		await delay(1000);
-		if (!called && !signal?.aborted) {
-			console.warn(currentFeature, '→ Selector not found on page:', selector);
-		}
-	})();
 	globalThis.addEventListener('animationstart', (event: AnimationEvent) => {
 		const target = event.target as ExpectedElement;
 		// The target can match a selector even if the animation actually happened on a ::before pseudo-element, so it needs an explicit exclusion here
@@ -100,7 +101,7 @@ export default function observe<
 			return;
 		}
 
-		called = true;
+		// called = true;
 
 		// Removes this specific selector’s animation once it was seen
 		target.classList.add(seenMark);
