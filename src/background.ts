@@ -3,7 +3,7 @@ import { globalCache } from 'webext-storage-cache'; // Also needed to regularly 
 import { addOptionsContextMenu } from 'webext-tools';
 import addPermissionToggle from 'webext-permission-toggle';
 import webextAlert from 'webext-alert';
-import { StorageItem } from 'webext-storage';
+// import { StorageItem } from 'webext-storage';
 import { handleMessages } from 'webext-msg';
 
 // import optionsStorage, {hasToken} from './options-storage.js';
@@ -13,7 +13,7 @@ import { styleHotfixes } from './helpers/hotfix.js';
 
 const { version } = chrome.runtime.getManifest();
 
-const welcomeShown = new StorageItem('welcomed', { defaultValue: false });
+// const welcomeShown = new StorageItem('welcomed', { defaultValue: false });
 
 // GHE support
 addPermissionToggle();

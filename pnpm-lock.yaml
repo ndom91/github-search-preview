@@ -8,12 +8,18 @@ importers:
 
   .:
     dependencies:
+      abort-utils:
+        specifier: ^1.2.0
+        version: 1.2.0
       code-tag:
         specifier: ^1.2.0
         version: 1.2.0
       dom-chef:
         specifier: ^5.1.1
         version: 5.1.1
+      dom-loaded:
+        specifier: ^3.1.0
+        version: 3.1.0
       github-url-detection:
         specifier: ^10.0.1
         version: 10.0.1
@@ -41,9 +47,6 @@ importers:
       webext-permission-toggle:
         specifier: ^5.1.0
         version: 5.1.0
-      webext-storage:
-        specifier: ^1.2.2
-        version: 1.2.2
       webext-storage-cache:
         specifier: ^6.0.3
         version: 6.0.3
@@ -129,6 +132,9 @@ importers:
       svelte-preprocess:
         specifier: '6'
         version: 6.0.3(postcss@8.4.47)(svelte@4.2.19)(typescript@5.6.3)
+      typed-query-selector:
+        specifier: ^2.12.0
+        version: 2.12.0
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -489,6 +495,10 @@ packages:
   '@types/tern@0.23.9':
     resolution: {integrity: sha512-ypzHFE/wBzh+BlH6rrBgS5I/Z7RD21pGhZ2rltb/+ZrVM1awdZwjx7hE5XfuYgHWk9uvV5HLZN3SloevCAp3Bw==}
 
+  abort-utils@1.2.0:
+    resolution: {integrity: sha512-C++yavghYIAoAtd7NDHqVEgNLoZVNIxCNZQZrQd8mbHY173NpT/qOJmGU9Z0565GiCA7kqXWMjaVchIP4F0WMg==}
+    engines: {node: '>=18'}
+
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
     peerDependencies:
@@ -791,6 +801,10 @@ packages:
 
   dom-chef@5.1.1:
     resolution: {integrity: sha512-lCRaSVJJsq+oE+1xXfuowDRRFoj4kbYRJVBLtQ91KaabjZz3y0tbldhuzGK1ko4mvSdJDRTbvK1Vwj6p4ursHw==}
+
+  dom-loaded@3.1.0:
+    resolution: {integrity: sha512-dKa1kbseIZ5oC3A+UhYNtUZvZpf6vDgZVhBmg7EUAf5OSN8nofpbc+nqdm52h1Ylla2BTIcLfIdRQ/r6X6m5EA==}
+    engines: {node: '>=12'}
 
   dom-serializer@1.4.1:
     resolution: {integrity: sha512-VHwB3KfrcOOkelEG2ZOfxqLZdfkil8PtJi4P8N2MMXucZq2yLp75ClViUlOVwyoHEDjYU433Aq+5zWP61+RGag==}
@@ -2238,6 +2252,9 @@ packages:
     resolution: {integrity: sha512-/OxDN6OtAk5KBpGb28T+HZc2M+ADtvRxXrKKbUwtsLgdoxgX13hyy7ek6bFRl5+aBs2yZzB0c4CnQfAtVypW/g==}
     engines: {node: '>= 0.4'}
 
+  typed-query-selector@2.12.0:
+    resolution: {integrity: sha512-SbklCd1F0EiZOyPiW192rrHZzZ5sBijB6xM+cpmrwDqObvdtunOHHIk9fCGsoK5JVIYXoyEp4iEdE3upFH3PAg==}
+
   typescript@5.6.3:
     resolution: {integrity: sha512-hjcS1mhfuyi4WW8IWtjP7brDrG2cuDZukyrYrSauoXGNgx0S7zceP07adYkJycEr56BOUTNPzbInooiN3fn1qw==}
     engines: {node: '>=14.17'}
@@ -2330,10 +2347,6 @@ packages:
   webext-storage-cache@6.0.3:
     resolution: {integrity: sha512-oMi81QhsJno/rCIcX4N8zQ1DoWX1fv/GAillvZX6WoCvXGBAqFH7A+owCmYx5wVdi9g9kdTX5GbY6w7w+UfMlA==}
     engines: {node: '>=18'}
-
-  webext-storage@1.2.2:
-    resolution: {integrity: sha512-544gs8/iyoXR+mR/rJpt+Pkl3h1SgrLBOvNWr2uu7VPtRrhiHZWGH4Po9GAKtswN0RBSsx2tRKnBtxFskBILgw==}
-    engines: {node: '>=20'}
 
   webext-tools@2.0.1:
     resolution: {integrity: sha512-pk+lgvnTRMtzn1MvLeBien1nB15V5kIhung3w9ZFLyPXRzmZi5dHtr6BJJcNwJ8yzK+OeIsUk5qIDMEjEwgQKQ==}
@@ -2689,6 +2702,8 @@ snapshots:
     dependencies:
       '@types/estree': 1.0.6
 
+  abort-utils@1.2.0: {}
+
   acorn-jsx@5.3.2(acorn@8.14.0):
     dependencies:
       acorn: 8.14.0
@@ -3033,6 +3048,8 @@ snapshots:
     dependencies:
       '@types/react': 17.0.83
       svg-tag-names: 3.0.1
+
+  dom-loaded@3.1.0: {}
 
   dom-serializer@1.4.1:
     dependencies:
@@ -4549,6 +4566,8 @@ snapshots:
       is-typed-array: 1.1.13
       possible-typed-array-names: 1.0.0
 
+  typed-query-selector@2.12.0: {}
+
   typescript@5.6.3: {}
 
   uint8array-extras@1.4.0: {}
@@ -4652,10 +4671,6 @@ snapshots:
       '@sindresorhus/to-milliseconds': 2.0.0
       type-fest: 4.26.1
       webext-detect: 5.3.0
-      webext-polyfill-kinda: 1.0.2
-
-  webext-storage@1.2.2:
-    dependencies:
       webext-polyfill-kinda: 1.0.2
 
   webext-tools@2.0.1:

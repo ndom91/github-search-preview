@@ -24,8 +24,10 @@
 	"license": "MIT",
 	"packageManager": "pnpm@9.12.0+sha512.4abf725084d7bcbafbd728bfc7bee61f2f791f977fd87542b3579dcb23504d170d46337945e4c66485cd12d588a0c0e570ed9c477e7ccdd8507cf05f3f92eaca",
 	"dependencies": {
+		"abort-utils": "^1.2.0",
 		"code-tag": "^1.2.0",
 		"dom-chef": "^5.1.1",
+		"dom-loaded": "^3.1.0",
 		"github-url-detection": "^10.0.1",
 		"memoize": "^10.0.0",
 		"octicons-plain-react": "^19.12.0",
@@ -35,7 +37,6 @@
 		"webext-dynamic-content-scripts": "^10.0.4",
 		"webext-msg": "^1.0.0",
 		"webext-permission-toggle": "^5.1.0",
-		"webext-storage": "^1.2.2",
 		"webext-storage-cache": "^6.0.3",
 		"webext-tools": "^2.0.1"
 	},
@@ -66,6 +67,7 @@
 		"stylelint": "^16.10.0",
 		"svelte": "4",
 		"svelte-preprocess": "6",
+		"typed-query-selector": "^2.12.0",
 		"typescript": "^5.6.3",
 		"unplugin-lightningcss": "^0.1.0"
 	},

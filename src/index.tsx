@@ -3,20 +3,20 @@ import CodeSquare from 'octicons-plain-react/CodeSquare';
 import Copy from 'octicons-plain-react/Copy';
 import Close from 'octicons-plain-react/XCircle';
 import NewTab from 'octicons-plain-react/LinkExternal';
-import * as pageDetect from 'github-url-detection';
+// import * as pageDetect from 'github-url-detection';
 import mem from 'memoize';
-import {messageRuntime} from 'webext-msg';
+import { messageRuntime } from 'webext-msg';
 
-import features from '../feature-manager.js';
-import observe from '../helpers/selector-observer.js';
-import {searchResultFileName} from '../github-helpers/selectors.js';
+// import features from '../feature-manager.js';
+import observe from './helpers/selector-observer.js';
+import { searchResultFileName } from './selectors.js';
 
 import './preview-search-result.css';
 
 // Fetch via background.js due to CORB policies. Also memoize to avoid multiple requests.
 const fetchFile = mem(
 	async (url: string): Promise<string> =>
-		messageRuntime({fetchText: url}),
+		messageRuntime({ fetchText: url }),
 );
 
 function openInBackground(url: string): void {
@@ -108,15 +108,19 @@ function init(signal: AbortSignal): void {
 				<CodeSquare />
 			</a>,
 		);
-	}, {signal});
+	}, { signal });
 }
 
-void features.add(import.meta.url, {
-	include: [
-		pageDetect.isGlobalSearchResults,
-	],
-	init,
-});
+const abortSignal = new AbortController().signal;
+
+init(abortSignal)
+
+// void features.add(import.meta.url, {
+// 	include: [
+// 		pageDetect.isGlobalSearchResults,
+// 	],
+// 	init,
+// });
 
 /*
 
