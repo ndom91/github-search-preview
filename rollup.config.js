@@ -23,6 +23,7 @@ const rollup = {
     'welcome': './src/welcome.svelte',
     'background': './src/background.ts',
     'content-script': './src/content-script.ts',
+    'index': './src/index.ts',
     // Features
     'preview-results': './src/preview-results.tsx',
   },

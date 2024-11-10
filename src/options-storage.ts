@@ -9,7 +9,7 @@ const defaults = Object.assign({
 	logging: false,
 	logHTTP: false,
 }, {
-	id: 'github-search-preview'
+	id: 'preview-results'
 });
 
 
