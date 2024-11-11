@@ -9,7 +9,7 @@
   "permissions": [
     "storage",
     "scripting",
-    "activeTab",
+    "activeTab"
   ],
   "host_permissions": [
     "https://github.com/*",
