@@ -9,9 +9,7 @@
   "permissions": [
     "storage",
     "scripting",
-    "contextMenus",
     "activeTab",
-    "alarms"
   ],
   "host_permissions": [
     "https://github.com/*",
