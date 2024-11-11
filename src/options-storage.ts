@@ -1,6 +1,6 @@
 import OptionsSyncPerDomain from "webext-options-sync-per-domain"
 
-export type RGHOptions = typeof defaults
+export type GSPOptions = typeof defaults
 
 const defaults = Object.assign({
   actionUrl: "https://github.com/",

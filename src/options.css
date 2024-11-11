@@ -1,179 +1,179 @@
 #js-failed+form {
-	display: none;
+  display: none;
 }
 
 :root {
-	--rgh-red: #cf222e;
-	--content-width: 750px;
-	--viewport-margin: 30px;
+  --gsp-red: #cf222e;
+  --content-width: 750px;
+  --viewport-margin: 30px;
 
-	max-width: none;
+  max-width: none;
 }
 
 body {
-	margin: 0;
+  margin: 0;
 }
 
 form {
-	max-width: var(--content-width);
-	margin: auto;
-	padding-block: 1em;
+  max-width: var(--content-width);
+  margin: auto;
+  padding-block: 1em;
 }
 
 html::after {
-	/* Add some extra scroll to the page to reduce section toggle jumps/scroll */
-	content: '';
-	display: block;
-	height: 50vh;
-	background: url('icon.png') center no-repeat;
-	filter: opacity(0.1) saturate(0) brightness(1.2);
+  /* Add some extra scroll to the page to reduce section toggle jumps/scroll */
+  content: '';
+  display: block;
+  height: 50vh;
+  background: url('icon.png') center no-repeat;
+  filter: opacity(0.1) saturate(0) brightness(1.2);
 }
 
 @media (prefers-color-scheme: dark) {
-	:root {
-		--rgh-red: #f85149;
-	}
+  :root {
+    --gsp-red: #f85149;
+  }
 }
 
 p {
-	margin-top: 0;
+  margin-top: 0;
 }
 
 p:last-child {
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 ul {
-	padding-left: 0;
-	list-style: none;
+  padding-left: 0;
+  list-style: none;
 }
 
 li[data-validation] {
-	margin-bottom: 0.3em;
+  margin-bottom: 0.3em;
 }
 
 details {
-	margin-bottom: 1em;
+  margin-bottom: 1em;
 }
 
 output {
-	font-style: italic;
+  font-style: italic;
 }
 
 small {
-	opacity: 80%;
+  opacity: 80%;
 }
 
 details[open] {
-	--border-left: 4px;
+  --border-left: 4px;
 
-	border-left: solid var(--border-left) #aaa4;
-	padding-bottom: 1px;
+  border-left: solid var(--border-left) #aaa4;
+  padding-bottom: 1px;
 }
 
 summary {
-	--summary-padding: 10px;
+  --summary-padding: 10px;
 
-	position: sticky;
-	top: 0;
-	z-index: 1;
-	background: light-dark(#f9f9f9, #272727);
-	list-style: none;
-	padding: var(--summary-padding);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: light-dark(#f9f9f9, #272727);
+  list-style: none;
+  padding: var(--summary-padding);
 }
 
 summary::-webkit-details-marker {
-	display: none;
-	/* Just for Safari. Chrome uses `list-style` */
+  display: none;
+  /* Just for Safari. Chrome uses `list-style` */
 }
 
 summary:hover {
-	background: light-dark(#e9e9e9, #353535);
+  background: light-dark(#e9e9e9, #353535);
 }
 
 details[open] summary {
-	margin-bottom: 10px;
-	padding-left: calc(var(--summary-padding) - var(--border-left));
+  margin-bottom: 10px;
+  padding-left: calc(var(--summary-padding) - var(--border-left));
 }
 
 details[open]> :not(summary) {
-	margin-left: 10px;
+  margin-left: 10px;
 }
 
 [data-validation]::before {
-	content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" fill="gray" d="M8 5.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM4 8a4 4 0 118 0 4 4 0 01-8 0z"></path></svg>');
-	width: 16px;
-	height: 16px;
-	vertical-align: -4px;
-	margin-right: 0.3em;
-	display: inline-block;
+  content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" fill="gray" d="M8 5.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM4 8a4 4 0 118 0 4 4 0 01-8 0z"></path></svg>');
+  width: 16px;
+  height: 16px;
+  vertical-align: -4px;
+  margin-right: 0.3em;
+  display: inline-block;
 }
 
 [data-validation='valid']::before {
-	content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" fill="%2328a745" d="M8 16A8 8 0 108 0a8 8 0 000 16zm3.78-9.72a.75.75 0 00-1.06-1.06L6.75 9.19 5.28 7.72a.75.75 0 00-1.06 1.06l2 2a.75.75 0 001.06 0l4.5-4.5z"></path></svg>');
+  content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" fill="%2328a745" d="M8 16A8 8 0 108 0a8 8 0 000 16zm3.78-9.72a.75.75 0 00-1.06-1.06L6.75 9.19 5.28 7.72a.75.75 0 00-1.06 1.06l2 2a.75.75 0 001.06 0l4.5-4.5z"></path></svg>');
 }
 
 [data-validation='invalid']::before {
-	content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" fill="%23cb2431" d="M1.5 8a6.5 6.5 0 0110.535-5.096l-9.131 9.131A6.472 6.472 0 011.5 8zm2.465 5.096a6.5 6.5 0 009.131-9.131l-9.131 9.131zM8 0a8 8 0 100 16A8 8 0 008 0z"></path></svg>');
+  content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" fill="%23cb2431" d="M1.5 8a6.5 6.5 0 0110.535-5.096l-9.131 9.131A6.472 6.472 0 011.5 8zm2.465 5.096a6.5 6.5 0 009.131-9.131l-9.131 9.131zM8 0a8 8 0 100 16A8 8 0 008 0z"></path></svg>');
 }
 
 [name='customCSS'] {
-	font-size: 11px;
+  font-size: 11px;
 }
 
 [name='personalToken']:not(:focus) {
-	-webkit-text-security: circle;
+  -webkit-text-security: circle;
 }
 
 .feature:not([hidden]) {
-	display: flex;
-	align-items: baseline;
-	flex-wrap: wrap;
-	gap: 0 0.4em;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0 0.4em;
 }
 
 .feature input[type='checkbox'] {
-	flex-shrink: 0;
+  flex-shrink: 0;
 }
 
 .feature-checkbox:not(:checked)+.info .feature-name {
-	text-decoration: line-through;
+  text-decoration: line-through;
 }
 
 .feature:has(.feature-checkbox:disabled)>*:not(.hotfix-notice) {
-	opacity: 50%;
+  opacity: 50%;
 }
 
 .feature .info {
-	flex: 1;
+  flex: 1;
 }
 
 .feature .description {
-	opacity: 80%;
+  opacity: 80%;
 }
 
 .feature-link {
-	margin: 0 0.6em;
+  margin: 0 0.6em;
 }
 
 .screenshot {
-	max-width: 100%;
-	margin-bottom: 2em;
-	border: 1px solid #d1d5da;
-	border-radius: 0.5em;
-	min-width: 2em;
-	min-height: 2em;
+  max-width: 100%;
+  margin-bottom: 2em;
+  border: 1px solid #d1d5da;
+  border-radius: 0.5em;
+  min-width: 2em;
+  min-height: 2em;
 }
 
 .screenshot-toggle:checked~.screenshot-link {
-	font-style: italic;
+  font-style: italic;
 }
 
 .screenshot-toggle:checked~.screenshot {
-	display: block;
+  display: block;
 }
 
 /* Hide "Button link" on GHE domains https://github.com/refined-github/refined-github/issues/7704 */
 .OptionsSyncPerDomain-picker:has([value='default']:not(:checked))~#action {
-	display: none;
+  display: none;
 }

@@ -4,7 +4,7 @@ import stripIndent from "strip-indent"
 import { Promisable } from "type-fest"
 import { isWebPage } from "webext-detect"
 
-import optionsStorage, { RGHOptions } from "../options-storage.js"
+import optionsStorage, { GSPOptions } from "../options-storage.js"
 import asyncForEach from "./async-for-each.js"
 import { catchErrors } from "./errors.js"
 import ArrayMap from "./map-of-arrays.js"
@@ -50,7 +50,7 @@ const shortcutMap = new Map<string, string>()
 const getFeatureID = (url: string): FeatureID => url.split("/").pop()!.split(".")[0] as FeatureID
 
 // eslint-disable-next-line no-async-promise-executor
-const globalReady = new Promise<RGHOptions>(async (resolve) => {
+const globalReady = new Promise<GSPOptions>(async (resolve) => {
   // This file may be imported in the options
   if (!isWebPage()) {
     return

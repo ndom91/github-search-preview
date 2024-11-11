@@ -6,7 +6,7 @@ declare var content: {
   fetch: GlobalFetch
 } | undefined
 
- 
+
 declare var navigation: typeof window.navigation
 
 type GlobalFetch = typeof fetch
@@ -40,7 +40,7 @@ declare module "*.gql" {
   export = string
 }
 
-// Custom UI events specific to RGH
+// Custom UI events specific to GSP
 interface GlobalEventHandlersEventMap {
   "details:toggled": CustomEvent
   "pjax:error": CustomEvent
@@ -56,8 +56,8 @@ declare namespace JSX {
     "clipboard-copy": IntrinsicElements.button & { for?: string }
     "details-dialog": IntrinsicElements.div & { tabindex: string }
     "details-menu": IntrinsicElements.div & { src?: string, preload?: boolean }
-    "has-rgh": IntrinsicElements.div
-    "has-rgh-inner": IntrinsicElements.div
+    "has-gsp": IntrinsicElements.div
+    "has-gsp-inner": IntrinsicElements.div
     "include-fragment": IntrinsicElements.div & { src?: string }
     "label": IntrinsicElements.label & { for?: string }
     "relative-time": IntrinsicElements.div & { datetime: string }
