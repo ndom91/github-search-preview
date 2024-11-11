@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/chrome-manifest",
   "name": "GitHub Search Preview",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Enables showing a preview of the full file from the GitHub search results page.",
   "homepage_url": "https://github.com/ndom91/github-search-preview",
   "manifest_version": 3,
