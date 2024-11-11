@@ -1,15 +1,17 @@
-import antfu from '@antfu/eslint-config';
+import antfu from '@antfu/eslint-config'
 
 export default antfu(
   {
     react: true,
     svelte: true,
-    stylistic: {
-      indent: 'tab',
-    },
-    unicorn: {
-      allRecommended: true,
-    },
+    stylistic: false,
+    // stylistic: {
+    //   indent: 2,
+    //   quotes: "double",
+    // },
+    // unicorn: {
+    //   allRecommended: true,
+    // },
     globals: [
       'browser',
     ],
@@ -33,20 +35,21 @@ export default antfu(
       'jsdoc/check-alignment': 'off', // Not enough to be useful
 
       // Antfu style disagreements
-      'regexp/no-useless-character-class': 'off', // [/] is more readable than \/
-      'style/object-curly-spacing': ['error', 'never'], // Unnecessary change for now
-      'style/block-spacing': ['error', 'never'], // Same
-      'jsonc/array-bracket-spacing': 'off', // Same
-      'style/brace-style': ['error', '1tbs'], // Naw, man
-      'style/semi': ['error', 'always'],
-      'style/member-delimiter-style': ['error', {
-        multiline: {
-          delimiter: 'semi',
-        },
-      }],
-      'style/arrow-parens': ['error', 'as-needed'],
-      'prefer-template': 'off', // When there's a single `+` templates are less readable
-      'style/jsx-one-expression-per-line': 'off', // Terrible for inline elements, e.g. text
+      // 'regexp/no-useless-character-class': 'off', // [/] is more readable than \/
+      // 'style/object-curly-spacing': ['error', 'never'], // Unnecessary change for now
+      // 'style/block-spacing': ['error', 'never'], // Same
+      // 'jsonc/array-bracket-spacing': 'off', // Same
+      // 'style/brace-style': ['error', '1tbs'], // Naw, man
+      // 'style/semi': ['error', 'always'],
+      // 'style/member-delimiter-style': ['error', {
+      //   multiline: {
+      //     delimiter: 'semi',
+      //   },
+      // }],
+      // 'style/arrow-parens': ['error', 'as-needed'],
+      // 'prefer-template': 'off', // When there's a single `+` templates are less readable
+      // 'style/jsx-one-expression-per-line': 'off', // Terrible for inline elements, e.g. text
+      // 'style/no-tabs': 'error',
 
       //  Disable some unicorn rules
       'unicorn/expiring-todo-comments': 'off', // We just got too many, too much noise
@@ -78,8 +81,8 @@ export default antfu(
 
       'test/consistent-test-it': 'off',
       'sort-imports': 'off',
-      'perfectionist/sort-imports': 'off',
-      'perfectionist/sort-named-imports': 'off',
+      'perfectionist/sort-imports': 'error',
+      'perfectionist/sort-named-imports': 'error',
       'antfu/top-level-function': 'off', // Maybe later
       'unused-imports/no-unused-vars': 'off', // Buggy
       'no-console': 'off',
@@ -168,10 +171,10 @@ export default antfu(
       ],
       // TODO: Enable after https://github.com/Rel1cx/eslint-react/issues/739
       // "react/function-component-definition": [
-      // 	"error",
-      // 	{
-      // 		"namedComponents": "function-declaration"
-      // 	}
+      // "error",
+      //   {
+      //    "namedComponents": "function-declaration"
+      //   }
       // ]
     },
   },
@@ -220,4 +223,4 @@ export default antfu(
   {
     ignores: ['safari'],
   },
-);
+)

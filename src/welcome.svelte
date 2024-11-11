@@ -1,125 +1,127 @@
-<svelte:options customElement='rgh-welcome' />
+<svelte:options customElement="rgh-welcome" />
 
-<script lang='ts'>
-	import './welcome.css';
-	import {onMount} from 'svelte';
+<script lang="ts">
+  import { onMount } from "svelte"
 
-	import optionsStorage from './options-storage.js';
-	import {hasValidGitHubComToken} from './helpers/github-token.js';
+  import { hasValidGitHubComToken } from "./helpers/github-token.js"
 
-	let stepVisible = 1;
-	let stepValid = 0;
-	let tokenInput = '';
-	let tokenError = '';
+  import optionsStorage from "./options-storage.js"
+  import "./welcome.css"
 
-	$: if (stepValid === 1) {
-		setTimeout(showThirdStep, 2000);
-	}
+  let stepVisible = 1
+  let stepValid = 0
+  let tokenInput = ""
+  let tokenError = ""
 
-	$: if (stepValid === 3) {
-		setTimeout(() => {
-			location.replace('https://github.com/refined-github/refined-github/wiki');
-		}, 2000);
-	}
+  $: if (stepValid === 1) {
+    setTimeout(showThirdStep, 2000)
+  }
 
-	$: if (tokenInput) {
-		verifyToken();
+  $: if (stepValid === 3) {
+    setTimeout(() => {
+      location.replace("https://github.com/refined-github/refined-github/wiki")
+    }, 2000)
+  }
 
-		optionsStorage.set({personalToken: tokenInput});
-	}
+  $: if (tokenInput) {
+    verifyToken()
 
-	const origins = ['https://github.com/*', 'https://gist.github.com/*'];
+    optionsStorage.set({ personalToken: tokenInput })
+  }
 
-	async function grantPermissions() {
-		const granted = await chrome.permissions.request({origins});
-		if (granted) {
-			stepVisible = 2;
-			stepValid = 1;
-		}
-	}
+  const origins = ["https://github.com/*", "https://gist.github.com/*"]
 
-	function showThirdStep() {
-		stepVisible = 3;
-	}
+  async function grantPermissions() {
+    const granted = await chrome.permissions.request({ origins })
+    if (granted) {
+      stepVisible = 2
+      stepValid = 1
+    }
+  }
 
-	function markSecondStep() {
-		setTimeout(() => {
-			stepValid = 2;
-			stepVisible = 3;
-		}, 1000);
-	}
+  function showThirdStep() {
+    stepVisible = 3
+  }
 
-	async function verifyToken() {
-		if (await hasValidGitHubComToken(tokenInput)) {
-			stepValid = 3;
-			tokenError = '';
-		} else {
-			tokenError = 'Invalid token';
-		}
-	}
+  function markSecondStep() {
+    setTimeout(() => {
+      stepValid = 2
+      stepVisible = 3
+    }, 1000)
+  }
 
-	onMount(async () => {
-		if (await chrome.permissions.contains({origins})) {
-			stepValid = 1;
-			setTimeout(() => {
-				stepVisible = 2;
-			}, 500);
-		}
-	});
+  async function verifyToken() {
+    if (await hasValidGitHubComToken(tokenInput)) {
+      stepValid = 3
+      tokenError = ""
+    }
+    else {
+      tokenError = "Invalid token"
+    }
+  }
+
+  onMount(async () => {
+    if (await chrome.permissions.contains({ origins })) {
+      stepValid = 1
+      setTimeout(() => {
+        stepVisible = 2
+      }, 500)
+    }
+  })
 </script>
 
-<link rel='stylesheet' href='welcome.css'>
+<link rel="stylesheet" href="welcome.css">
 <main class:dimmed={stepValid === 3}>
-	<rgh-header title='Welcome to Refined GitHub'></rgh-header>
-	<ul>
-		<li class:valid={stepValid >= 1} class:visible={stepVisible >= 1} class='will-show'>
-			{#if stepValid === 0}
-				<button on:click={grantPermissions}>
-					Grant
-				</button>
-			{:else}
-				Grant
-			{/if}
-			the extension access to github.com
-		</li>
+  <rgh-header title="Welcome to Refined GitHub"></rgh-header>
+  <ul>
+    <li class:valid={stepValid >= 1} class:visible={stepVisible >= 1} class="will-show">
+      {#if stepValid === 0}
+        <button on:click={grantPermissions}>
+          Grant
+        </button>
+      {:else}
+        Grant
+      {/if}
+      the extension access to github.com
+    </li>
 
-		<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<li class:valid={stepValid >= 2} class:visible={stepVisible >= 2} class='will-show' on:click={showThirdStep}>
-			<a
-				href='https://github.com/settings/tokens/new?description=Refined%20GitHub&scopes=repo,read:project&default_expires_at=none'
-				on:click={markSecondStep}
-			>
-				Generate a token
-			</a>
-			to ensure that every feature works correctly.
-			<a
-				href='https://github.com/refined-github/refined-github/wiki/Security'
-			>
-				More info
-			</a>
-		</li>
+    <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <li class:valid={stepValid >= 2} class:visible={stepVisible >= 2} class="will-show" on:click={showThirdStep}>
+      <a
+        href="https://github.com/settings/tokens/new?description=Refined%20GitHub&scopes=repo,read:project&default_expires_at=none"
+        on:click={markSecondStep}
+      >
+        Generate a token
+      </a>
+      to ensure that every feature works correctly.
+      <a
+        href="https://github.com/refined-github/refined-github/wiki/Security"
+      >
+        More info
+      </a>
+    </li>
 
-		<li class:valid={stepValid >= 3} class:visible={stepVisible >= 3} class='will-show'>
-			<label for='token-input'>Paste token:</label>
-			<input
-				id='token-input'
-				type='text'
-				size='10'
-				autocomplete='current-password'
-				name='personalToken'
-				bind:value={tokenInput}
-			/>
-			{#if tokenError}
-				<span class='error'>{tokenError}</span>
-			{/if}
-		</li>
-	</ul>
+    <li class:valid={stepValid >= 3} class:visible={stepVisible >= 3} class="will-show">
+      <label for="token-input">Paste token:</label>
+      <input
+        id="token-input"
+        type="text"
+        size="10"
+        autocomplete="current-password"
+        name="personalToken"
+        bind:value={tokenInput}
+      />
+      {#if tokenError}
+        <span class="error">{tokenError}</span>
+      {/if}
+    </li>
+  </ul>
 
-	<footer>
-		<h2 class:visible={stepValid === 3} class='will-show'>
-			Setup complete, redirecting to
-			<a class='hidden-link' href='https://github.com/refined-github/refined-github/wiki' target='_self'>GitHub</a>…
-		</h2>
-	</footer>
+  <footer>
+    <h2 class:visible={stepValid === 3} class="will-show">
+      Setup complete, redirecting to
+      <a class="hidden-link" href="https://github.com/refined-github/refined-github/wiki" target="_self">GitHub</a>…
+    </h2>
+  </footer>
 </main>

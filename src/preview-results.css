@@ -1,4 +1,4 @@
-.PreviewResults--Dialog {
+.gh-search-preview--dialog {
 	width: 66.6667%;
 	max-width: 768px;
 	height: auto;
@@ -30,7 +30,7 @@
 	}
 }
 
-.PreviewResults--Dialog__Header {
+.gh-search-preview--dialog__header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -40,19 +40,19 @@
 	background-color: var(--bgColor-default);
 	border-bottom: 2px solid var(--borderColor-muted, #d8dee4);
 
-	.PreviewResults--Dialog__HeaderActions {
+	.gh-search-preview--dialog__headerActions {
 		display: flex;
 		justify-content: space-between;
 		gap: 1rem;
 	}
 
-	.PreviewResults--Dialog__Filename {
+	.gh-search-preview--dialog__Filename {
 		justify-self: flex-start;
 	}
 
-	.PreviewResults--Dialog__NewTabBtn,
-	.PreviewResults--Dialog__CopyBtn,
-	.PreviewResults--Dialog__CloseBtn {
+	.gh-search-preview--dialog__newTabBtn,
+	.gh-search-preview--dialog__copyBtn,
+	.gh-search-preview--dialog__closeBtn {
 		color: var(--fgColor-muted, var(--color-fg-muted, #848d97));
 
 		&:hover {
@@ -60,7 +60,7 @@
 		}
 	}
 
-	.PreviewResults--Dialog__CopyBtn {
+	.gh-search-preview--dialog__copyBtn {
 		width: 14px;
 	}
 }
