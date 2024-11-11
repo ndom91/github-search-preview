@@ -3,12 +3,8 @@ import { handleMessages } from "webext-msg"
 import { globalCache } from "webext-storage-cache" // Also needed to regularly clear the cache
 import { addOptionsContextMenu } from "webext-tools"
 
-import { styleHotfixes } from "./helpers/hotfix.js"
-
 import isDevelopmentVersion from "./helpers/is-development-version.js"
 import "webext-dynamic-content-scripts"
-
-const { version } = chrome.runtime.getManifest()
 
 // Firefox/Safari polyfill
 addOptionsContextMenu()
@@ -36,9 +32,6 @@ handleMessages({
   },
   async openOptionsPage() {
     return chrome.runtime.openOptionsPage()
-  },
-  async getStyleHotfixes() {
-    return styleHotfixes.get(version)
   },
 })
 

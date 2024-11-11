@@ -32,7 +32,7 @@ function init(signal: AbortSignal): void {
   const dialogElement = (
     <dialog className="gh-search-preview--dialog" onClick={onClickOutside}>
       <div className="gh-search-preview--dialog__header">
-        <div id="refined-preview-search-result-filename"></div>
+        <div id="gh-search-preview-result-filename"></div>
         <div className="gh-search-preview--dialog__headerActions">
           <Copy
             title="Copy Contents to Clipboard"
@@ -51,7 +51,7 @@ function init(signal: AbortSignal): void {
           />
         </div>
       </div>
-      <div id="refined-preview-search-result-pre-content"></div>
+      <div id="gh-search-preview-result-content"></div>
     </dialog>
   ) as unknown as HTMLDialogElement
 
@@ -90,7 +90,7 @@ function init(signal: AbortSignal): void {
           const fileBody = await fetchFile(new URL(urlWithoutParameters).toString())
           const fileName = link.textContent
 
-          const dialogPreElement = document.querySelector("#refined-preview-search-result-pre-content")
+          const dialogPreElement = document.querySelector("#gh-search-preview-result-content")
           if (dialogPreElement) {
             // Remove all children from dialogPreElement
             dialogPreElement.innerHTML = ""
@@ -98,7 +98,7 @@ function init(signal: AbortSignal): void {
           }
 
           // Set dialog header file name
-          const dialogFilename = document.querySelector("#refined-preview-search-result-filename")
+          const dialogFilename = document.querySelector("#gh-search-preview-result-filename")
           if (dialogFilename) {
             dialogFilename.textContent = link.textContent
           }

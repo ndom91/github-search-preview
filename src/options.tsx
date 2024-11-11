@@ -56,7 +56,7 @@ function updateRateLink(): void {
     return
   }
 
-  $("a#rate-link").href = isFirefox() ? "https://addons.mozilla.org/en-US/firefox/addon/refined-github-" : "https://apps.apple.com/app/id1519867270?action=write-review"
+  $("a#rate-link").href = isFirefox() ? "https://addons.mozilla.org/en-US/firefox/addon/github-search-preview" : "https://apps.apple.com/app/id_TODO_REPLACE_ME_WITH_ID?action=write-review"
 }
 
 async function generateDom(): Promise<void> {

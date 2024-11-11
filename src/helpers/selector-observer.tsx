@@ -27,7 +27,7 @@ type Options = {
   signal?: AbortSignal
 }
 
-const animation = "rgh-selector-observer"
+const animation = "gsp-selector-observer"
 
 const registerAnimation = onetime((): void => {
   document.head.append(<style>{`@keyframes ${animation} {}`}</style>)
@@ -55,7 +55,7 @@ export default function observe<
   }
 
   const selector = typeof selectors === "string" ? selectors : selectors.join(",\n")
-  const seenMark = `rgh-seen-${getCallerID()}`
+  const seenMark = `gsp-seen-${getCallerID()}`
 
   registerAnimation()
 

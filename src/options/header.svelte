@@ -1,5 +1,5 @@
 <svelte:options customElement={{
-  tag: "rgh-header",
+  tag: "gsp-header",
   props: {
     title: { type: "String", attribute: "title" },
   },

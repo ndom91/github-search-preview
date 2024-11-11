@@ -1,4 +1,4 @@
-<svelte:options customElement="rgh-welcome" />
+<svelte:options customElement="gsp-welcome" />
 
 <script lang="ts">
   import { onMount } from "svelte"
@@ -19,7 +19,7 @@
 
   $: if (stepValid === 3) {
     setTimeout(() => {
-      location.replace("https://github.com/refined-github/refined-github/wiki")
+      location.replace("https://github.com/search")
     }, 2000)
   }
 
@@ -72,7 +72,7 @@
 
 <link rel="stylesheet" href="welcome.css">
 <main class:dimmed={stepValid === 3}>
-  <rgh-header title="Welcome to Refined GitHub"></rgh-header>
+  <gsp-header title="Welcome to GitHub Search Preview"></gsp-header>
   <ul>
     <li class:valid={stepValid >= 1} class:visible={stepVisible >= 1} class="will-show">
       {#if stepValid === 0}
@@ -89,7 +89,7 @@
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <li class:valid={stepValid >= 2} class:visible={stepVisible >= 2} class="will-show" on:click={showThirdStep}>
       <a
-        href="https://github.com/settings/tokens/new?description=Refined%20GitHub&scopes=repo,read:project&default_expires_at=none"
+        href="https://github.com/settings/tokens/new?description=github-search-preview&scopes=repo,read:project&default_expires_at=none"
         on:click={markSecondStep}
       >
         Generate a token
@@ -121,7 +121,7 @@
   <footer>
     <h2 class:visible={stepValid === 3} class="will-show">
       Setup complete, redirecting to
-      <a class="hidden-link" href="https://github.com/refined-github/refined-github/wiki" target="_self">GitHub</a>…
+      <a class="hidden-link" href="https://github.com/search" target="_self">GitHub Search</a>…
     </h2>
   </footer>
 </main>

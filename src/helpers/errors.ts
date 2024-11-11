@@ -1,5 +1,5 @@
 const fineGrainedTokenSuggestion = "Please use a GitHub App, OAuth App, or a personal access token with fine-grained permissions."
-const preferredMessage = "Refined GitHub does not support per-organization fine-grained tokens. https://github.com/refined-github/refined-github/wiki/Security"
+const preferredMessage = "GitHub Search Preview does not support per-organization fine-grained tokens."
 
 const { version } = chrome.runtime.getManifest()
 
@@ -14,7 +14,6 @@ export function parseFeatureNameFromStack(stack: string = new Error("stack").sta
 }
 
 export function logError(error: Error): void {
-  console.log("ERR", error)
   const { message, stack } = error
 
   const id = parseFeatureNameFromStack(stack!)
@@ -25,7 +24,7 @@ export function logError(error: Error): void {
   }
 
   if (message.includes("token")) {
-    console.log("ℹ️ Refined GitHub →", message, "→", id)
+    console.log("ℹ️ GitHub Search Preview →", message, "→", id)
     return
   }
 
@@ -35,7 +34,6 @@ export function logError(error: Error): void {
 
 export function catchErrors(): void {
   globalThis.addEventListener("error", (event) => {
-    console.log("error.event", event)
     const { error } = event // Access only once
     // Don't use `assertError` or it'll loop
     if (error) {
@@ -45,7 +43,6 @@ export function catchErrors(): void {
   })
 
   addEventListener("unhandledrejection", (event) => {
-    console.log("unhandledrejection.event", event)
     const error = event.reason // Access only once
     // Don't use `assertError` or it'll loop
     if (error) {

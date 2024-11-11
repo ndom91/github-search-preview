@@ -1,18 +1,12 @@
 import * as pageDetect from "github-url-detection"
-// import React from 'dom-chef';
 import { elementExists } from "select-dom"
 import stripIndent from "strip-indent"
 import { Promisable } from "type-fest"
 import { isWebPage } from "webext-detect"
-import { messageRuntime } from "webext-msg"
 
 import optionsStorage, { RGHOptions } from "../options-storage.js"
 import asyncForEach from "./async-for-each.js"
 import { catchErrors } from "./errors.js"
-import {
-  applyStyleHotfixes,
-  preloadSyncLocalStrings,
-} from "./hotfix.js"
 import ArrayMap from "./map-of-arrays.js"
 import waitFor from "./wait-for.js"
 
@@ -64,7 +58,6 @@ const globalReady = new Promise<RGHOptions>(async (resolve) => {
 
   const [options] = await Promise.all([
     optionsStorage.getAll(),
-    preloadSyncLocalStrings(),
   ])
 
   await waitFor(() => document.body)
@@ -73,9 +66,9 @@ const globalReady = new Promise<RGHOptions>(async (resolve) => {
     return
   }
 
-  if (elementExists("[refined-github]")) {
+  if (elementExists("[github-search-preview]")) {
     console.warn(stripIndent(`
-      Refined GitHub has been loaded twice. This may be because:
+      GitHub Search Preview has been loaded twice. This may be because:
 
       • You loaded the developer version, or
       • The extension just updated
@@ -85,11 +78,7 @@ const globalReady = new Promise<RGHOptions>(async (resolve) => {
     return
   }
 
-  document.documentElement.setAttribute("refined-github", "")
-
-  // Request in the background page to avoid showing a 404 request in the console
-  // https://github.com/refined-github/refined-github/issues/6433
-  void messageRuntime<string>({ getStyleHotfixes: true }).then(applyStyleHotfixes)
+  document.documentElement.setAttribute("github-search-preview", "")
 
   // if (options.customCSS.trim().length > 0) {
   // 	// Review #5857 and #5493 before making changes
@@ -108,7 +97,7 @@ const globalReady = new Promise<RGHOptions>(async (resolve) => {
   }
 
   if (elementExists("body.logged-out")) {
-    console.warn("Refined GitHub is only expected to work when you’re logged in to GitHub. Errors will not be shown.")
+    console.warn("GitHub Search Preview is only expected to work when you’re logged in to GitHub. Errors will not be shown.")
   }
   else {
     catchErrors()
