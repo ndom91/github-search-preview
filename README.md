@@ -1,6 +1,8 @@
 # github-search-preview
 
-Recreate the search dialog feature from [grep.app](https://grep.app) in GitHub! 
+Recreate the search result modal preview feature from [grep.app](https://grep.app) in GitHub! 
+
+Tired of browsing GitHub search results and having to "<kbd>ctrl</kbd> + click" each individual file and then jump back and forth among so many tabs? With this extension you can preview the full file search result directly in-context in a modal on the GitHub search results page.
 
 > Many thanks to [refined-github](https://github.com/refined-github/refined-github) for the bones of this extension :pray:
 
