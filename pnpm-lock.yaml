@@ -80,6 +80,9 @@ importers:
       webext-permission-toggle:
         specifier: ^5.1.0
         version: 5.1.0
+      webext-storage:
+        specifier: ^1.2.2
+        version: 1.2.2
       webext-storage-cache:
         specifier: ^6.0.3
         version: 6.0.3
@@ -3593,6 +3596,10 @@ packages:
   webext-storage-cache@6.0.3:
     resolution: {integrity: sha512-oMi81QhsJno/rCIcX4N8zQ1DoWX1fv/GAillvZX6WoCvXGBAqFH7A+owCmYx5wVdi9g9kdTX5GbY6w7w+UfMlA==}
     engines: {node: '>=18'}
+
+  webext-storage@1.2.2:
+    resolution: {integrity: sha512-544gs8/iyoXR+mR/rJpt+Pkl3h1SgrLBOvNWr2uu7VPtRrhiHZWGH4Po9GAKtswN0RBSsx2tRKnBtxFskBILgw==}
+    engines: {node: '>=20'}
 
   webext-tools@2.0.1:
     resolution: {integrity: sha512-pk+lgvnTRMtzn1MvLeBien1nB15V5kIhung3w9ZFLyPXRzmZi5dHtr6BJJcNwJ8yzK+OeIsUk5qIDMEjEwgQKQ==}
@@ -7657,6 +7664,10 @@ snapshots:
       '@sindresorhus/to-milliseconds': 2.0.0
       type-fest: 4.26.1
       webext-detect: 5.3.0
+      webext-polyfill-kinda: 1.0.2
+
+  webext-storage@1.2.2:
+    dependencies:
       webext-polyfill-kinda: 1.0.2
 
   webext-tools@2.0.1:

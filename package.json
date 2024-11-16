@@ -6,7 +6,7 @@
   "scripts": {
     "build": "run-p build:* --continue-on-error",
     "build:typescript": "tsc --noEmit",
-    "build:bundle": "rollup -c && ./bundle.sh",
+    "build:bundle": "rollup -c && pnpm dlx web-ext build -o",
     "fix": "run-p \"lint:css -- --fix\" \"lint:js -- --fix\" fix:prettier \"vitest -- --update\" --continue-on-error",
     "fix:prettier": "prettier . --write",
     "lint": "run-p lint:* --continue-on-error",
@@ -48,6 +48,7 @@
     "webext-msg": "^1.0.0",
     "webext-options-sync-per-domain": "^4.2.3",
     "webext-permission-toggle": "^5.1.0",
+    "webext-storage": "^1.2.2",
     "webext-storage-cache": "^6.0.3",
     "webext-tools": "^2.0.1"
   },
@@ -94,14 +95,6 @@
     "useTabs": false
   },
   "webExt": {
-    "sourceDir": "distribution",
-    "run": {
-      "keepProfileChanges": true,
-      "firefoxProfile": "./test/web-ext-profile",
-      "chromiumProfile": "./test/web-ext-profile",
-      "startUrl": [
-        "https://github.com/ndom91/github-search-preview"
-      ]
-    }
+    "sourceDir": "distribution"
   }
 }

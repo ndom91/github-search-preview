@@ -71,8 +71,9 @@
 </script>
 
 <link rel="stylesheet" href="welcome.css">
+
 <main class:dimmed={stepValid === 3}>
-  <gsp-header title="Welcome to GitHub Search Preview"></gsp-header>
+  <h2>Welcome to GitHub Search Preview</h2>
   <ul>
     <li class:valid={stepValid >= 1} class:visible={stepVisible >= 1} class="will-show">
       {#if stepValid === 0}

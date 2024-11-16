@@ -14,7 +14,7 @@ import webpackStatsPlugin from "rollup-plugin-webpack-stats"
 import { sveltePreprocess } from "svelte-preprocess"
 import lightning from "unplugin-lightningcss/rollup"
 
-const noise = new Set(["index", "dist", "src", "source", "distribution", "node_modules", "main", "esm", "cjs", "build", "built"])
+const noise = new Set(["index", "dist", "src", "source", "distribution", "node_modules", ".pnpm", "main", "esm", "cjs", "build", "built"])
 
 /** @type {import('rollup').RollupOptions} */
 const rollup = {
@@ -38,6 +38,7 @@ const rollup = {
           .split("/")
           .filter(part => !noise.has(part))
           .join("-")
+
         return `npm/${cleanName}.js`
       }
 
