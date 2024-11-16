@@ -29,7 +29,7 @@
     optionsStorage.set({ personalToken: tokenInput })
   }
 
-  const origins = ["https://github.com/*", "https://gist.github.com/*"]
+  const origins = ["https://github.com/*"]
 
   async function grantPermissions() {
     const granted = await chrome.permissions.request({ origins })
