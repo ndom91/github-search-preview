@@ -27,5 +27,10 @@ export default async function parseCode(fileContent: string, fileName: string): 
     engine: createJavaScriptRegexEngine(),
   })
 
-  return highlighter.codeToHtml(fileContent, { lang: extension ?? "js", theme: `github-${theme}-default` })
+  const parsedLanguage = (): string => {
+    if (!extension) return "bash"
+    return Object.keys(bundledLanguages).includes(extension) ? extension : "bash"
+  }
+
+  return highlighter.codeToHtml(fileContent, { lang: parsedLanguage(), theme: `github-${theme}-default` })
 }

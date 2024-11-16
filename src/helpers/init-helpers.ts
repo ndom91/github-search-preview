@@ -2,7 +2,7 @@ import * as pageDetect from "github-url-detection"
 import { elementExists } from "select-dom"
 import stripIndent from "strip-indent"
 import { Promisable } from "type-fest"
-import { isWebPage } from "webext-detect"
+import { isFirefox, isWebPage } from "webext-detect"
 
 import optionsStorage, { GSPOptions } from "../options-storage.js"
 import asyncForEach from "./async-for-each.js"
@@ -80,20 +80,15 @@ const globalReady = new Promise<GSPOptions>(async (resolve) => {
 
   document.documentElement.setAttribute("github-search-preview", "")
 
-  // if (options.customCSS.trim().length > 0) {
-  // 	// Review #5857 and #5493 before making changes
-  // 	// @ts-ignore
-  // 	document.head.append(document.createElement('style').setTextContent(options.customCSS));
-  // 	// <style>{ options.customCSS } </style>);
-  // }
+  if (!isFirefox()) {
+    // Create logging function
+    if (!options.logging) {
+      console.log = () => { /* No logging */ }
+    }
 
-  // Create logging function
-  if (!options.logging) {
-    console.log = () => { /* No logging */ }
-  }
-
-  if (!options.logHTTP) {
-    console.log = () => { /* No logging */ }
+    if (!options.logHTTP) {
+      console.log = () => { /* No logging */ }
+    }
   }
 
   if (elementExists("body.logged-out")) {
@@ -126,7 +121,6 @@ async function setupPageLoad(id: FeatureID, config: InternalRunConfig): Promise<
     const result = await init(featureController.signal)
     // Features can return `false` when they decide not to run on the current page
     if (result !== false) {
-      console.log("✅", id)
       // Register feature shortcuts
       for (const [hotkey, description] of Object.entries(shortcuts)) {
         shortcutMap.set(hotkey, description)

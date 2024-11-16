@@ -18,6 +18,9 @@
   "action": {
     "default_icon": "assets/icon.png"
   },
+  "optional_permissions": [
+    "*://*/*"
+  ],
   "optional_host_permissions": [
     "*://*/*"
   ],
@@ -58,5 +61,11 @@
         "https://*/*"
       ]
     }
-  ]
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "github-search-preview@ndo.dev",
+      "strict_min_version": "58.0"
+    }
+  }
 }

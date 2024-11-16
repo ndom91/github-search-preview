@@ -1,6 +1,8 @@
+import webextAlert from "webext-alert";
 import { handleMessages } from "webext-msg"
 import { StorageItem } from 'webext-storage';
 import { globalCache } from "webext-storage-cache"
+
 import { addOptionsContextMenu } from "webext-tools"
 
 import isDevelopmentVersion from "./helpers/is-development-version.js"
@@ -101,13 +103,13 @@ chrome.runtime.onInstalled.addListener(async () => {
   await showWelcomePage();
 })
 
-// chrome.permissions.onAdded.addListener(async (permissions) => {
-//   if (permissions.origins?.includes("*://*/*")) {
-//     await chrome.permissions.remove({
-//       origins: [
-//         "*://*/*",
-//       ],
-//     })
-//     await webextAlert("GitHub Search Preview is not meant to run on every website. If you’re looking to enable it on GitHub Enterprise, follow the instructions in the Options page.")
-//   }
-// })
+chrome.permissions.onAdded.addListener(async (permissions) => {
+  if (permissions.origins?.includes("*://*/*")) {
+    await chrome.permissions.remove({
+      origins: [
+        "*://*/*",
+      ],
+    })
+    await webextAlert("GitHub Search Preview is not meant to run on every website. If you’re looking to enable it on GitHub Enterprise, follow the instructions in the Options page.")
+  }
+})
