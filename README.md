@@ -15,14 +15,14 @@ Tired of browsing GitHub search results and having to "<kbd>ctrl</kbd> + click" 
 
 ## 🛟 Installation
 
-- [Chrome Web Store](https://chromewebstore.google.com/detail/github-search-preview/lhcbjnlpnjadiefblndnhkaigmagafpo)
-- Manual installation instructions:
+1. [Chrome Web Store](https://chromewebstore.google.com/detail/github-search-preview/lhcbjnlpnjadiefblndnhkaigmagafpo)
+2. [Firefox Addon](https://addons.mozilla.org/en-US/firefox/addon/github-search-preview/)
+3. Manual installation
 
-  See the [releases](https://github.com/ndom91/github-search-preview/releases) page for the latest release.
-  
-  1. Go to your browsers extension page (i.e. `chrome://extensions`)
-  2. [Enable developer mode](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked).
-  3. Drag and drop the `.zip` file below onto the page. 
+    1. See the [releases](https://github.com/ndom91/github-search-preview/releases) page for the latest release.
+    2. Go to your browsers extension page (i.e. `chrome://extensions`)
+    3. [Enable developer mode](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked).
+    4. Drag and drop the `.zip` file below onto the page. 
 
 ## 🖼️ Screenshot
 
