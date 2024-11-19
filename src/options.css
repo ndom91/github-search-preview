@@ -173,7 +173,7 @@ details[open]> :not(summary) {
   display: block;
 }
 
-/* Hide "Button link" on GHE domains https://github.com/refined-github/refined-github/issues/7704 */
+/* Hide "Button link" on GHE domains */
 .OptionsSyncPerDomain-picker:has([value='default']:not(:checked))~#action {
   display: none;
 }

@@ -99,7 +99,6 @@ const globalReady = new Promise<GSPOptions>(async (resolve) => {
   }
 
   // Detect unload via two events to catch both clicks and history navigation
-  // https://github.com/refined-github/refined-github/issues/6437#issuecomment-1489921988
   document.addEventListener("turbo:before-fetch-request", unloadAll) // Clicks
   document.addEventListener("turbo:visit", unloadAll) // Back/forward button
 

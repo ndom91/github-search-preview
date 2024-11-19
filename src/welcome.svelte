@@ -97,7 +97,7 @@
       </a>
       to ensure that every feature works correctly.
       <a
-        href="https://github.com/refined-github/refined-github/wiki/Security"
+        href="https://github.com/ndom91/github-search-preview/wiki"
       >
         More info
       </a>
